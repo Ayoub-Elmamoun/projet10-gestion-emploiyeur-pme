@@ -9,7 +9,7 @@ class employeeManager {
     private function getConnection (){
        if (is_null($this->connection)) {
            // connect to database
-           $this->connection = mysqli_connect('localhost','admin','admin','employee_db');
+           $this->connection = mysqli_connect('localhost','ayoub','ayoub!123','employees_db');
            if (!$this->connection) {
                $message = 'connection failed'. mysqli_connect_error();
                throw new Exception($message);
@@ -24,8 +24,7 @@ class employeeManager {
         //make query and get result
         $result = mysqli_query($this->getConnection(),$getdata);
         //get data as array
-        $employeeList = mysqli_fetch_assoc($result);
-        print_r($employeeList);
+        $employeeList = mysqli_fetch_all($result, MYSQLI_ASSOC);
         $employees = array();
 
         foreach ($employeeList as $employeeList) {

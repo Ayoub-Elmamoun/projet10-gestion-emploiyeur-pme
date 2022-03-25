@@ -32,7 +32,7 @@ class Employee {
         return $this->gender = $value;
     }
     public function getBirthDate(){
-        return $this->birthDate;
+        return $this->birthdate;
     }
     public function setBirthDate($value){
         return $this->birthdate  = $value;
