@@ -1,3 +1,18 @@
+<?php
+
+
+if (isset($_POST['username'], $_POST['password'])) {
+
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  if ($username == 'admin' && $password == 'admin') {
+
+    header('location:index.php');
+  }
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,17 +24,17 @@
 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../Realisation/style/css/owl.carousel.min.css">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../Realisation/style/css/bootstrap.min.css">
     
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../Realisation/style/css/style.css">
 
     <title>Website Menu #8</title>
   </head>
-  <body class="hero" style="background-image: url('images/nature-background.jpg');">
+  <body class="hero" style="background-image: url('/Realisation/style/images/nature-background.jpg');">
 
 
     <header role="banner">
@@ -49,13 +64,12 @@
       
                   <div class="form-check mb-3">
                     <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                    <label class="form-check-label" for="rememberPasswordCheck">
+                    <label class="form-check-label " for="rememberPasswordCheck">
                       Remember password
                     </label>
                   </div>
-                  <div class="d-grid">
-                    <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign
-                      in</button>
+                  <div class="d-grid ">
+                    <button class="col-lg-5  btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign Sin</button>
                   </div>
                   <hr class="my-4">
                 </form>
