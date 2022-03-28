@@ -1,8 +1,11 @@
 <?php
+include 'config.php';
+include 'employeeManager.php';
 
+$employeeManager = new EmployeeManager();
+$data = $employeeManager->getAllEmployees();
 
 ?>
-
 
 
 
@@ -35,7 +38,7 @@
   <header role="banner">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="index.html">pme</a>
+        <a class="navbar-brand" href="main.php">pme</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,73 +76,70 @@
       <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
         <div class="card border-0 shadow rounded-4 my-5 ">
           <div class="card-header text-center">
-            <div>ADD EMPOLYEE</div>
+            <div>YOUR EMPLOYEES</div>
           </div>
 
-          <div class="card-body" id="card-body">
-            <table class="table">
-              <thead id="table-head">
-                <tr>
-                  <th>Photo</th>
-                  <th>Registration Number </th>
-                  <th class="d-none d-lg-table-cell">First Name</th>
-                  <th class="d-none d-lg-table-cell">Last Name</th>
-                  <th class="d-none d-lg-table-cell">Birth Date</th>
-                  <th class="d-none d-lg-table-cell">Department</th>
-                  <th>Salary</th>
-                  <th>Occupation</th>
-                  <th id="actions">Action</th>
-                </tr>
-              </thead>
-              <?php
-              foreach ($data as $employee) {
-              ?>
-                <tr>
-                  <td><img class="border rounded-circle" style="max-width:50px;" src="<?php echo 'images/' . $employee->getPhoto(); ?>"></td>
-                  <td>
-                    <?= $employee->getRegistrationNumber() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getFirstName() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getLastName() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getBirthDate() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getDepartment() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getSalary() ?>
-                  </td>
-                  <td>
-                    <?= $employee->getOccupation() ?>
-                  </td>
-                  <td>
-                    <a href="edit.php?id=<?php echo $employee->getId() ?>" class="text-primary" style="text-decoration: none;"><i class="fa fa-fw fa-edit"></i>Edit</a> |
-                    <a href="delete.php?id=<?php echo $employee->getId() ?>" class="text-danger" style="text-decoration: none;" onClick="return confirm('Are you sure you want to delete this employee ?');"><i class="fa fa-fw fa-trash"></i>Delete</a>
-                  </td>
-                </tr>
-              <?php } ?>
-            </table>
-            <!-- <button class="btn-custom btn-secondary-custom-1" id="print"  onclick="onPrint()">Print</button> -->
-          </div>>
+          <div class="card ">
 
+            <div class="card-body table table-bordered" id="card-body">
+
+              <table class="table" id="worksTable">
+                <thead>
+                  <tr>
+
+                    <th>Registration number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of birth</th>
+                    <th>Function</th>
+                    <th>Salary</th>
+                    <th>Departement</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                  foreach ($data as $employee) {
+                  ?>
+
+                    <tr>
+                      <td><?= $employee->getRegistrationNumber() ?></td>
+                      <td><?= $employee->getFirstName() ?></td>
+                      <td><?= $employee->getLastName() ?></td>
+                      <td><?= $employee->getBirthDate() ?></td>
+                      <td><?= $employee->getFunctionEmployee() ?></td>
+                      <td><?= $employee->getSalary() ?></td>
+                      <td><?= $employee->getDepartement() ?></td>
+                      <td><?= $employee->getPhoto() ?></td>
+
+
+                      <td>
+                        <button class="btn btn-secondary "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
+                        <button class="btn btn-danger"> <a class="text-decoration-none " href="delete.php?id=<?php echo $employee->getId() ?>">delete</a></button>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+
+
+              </table>
+
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
 
 
 
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/main.js"></script>
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -1,27 +1,30 @@
 <?php
-require_once "employeeManager.php";
+include 'employeeManager.php';
 
 if (!empty($_POST)) {
-  $employeeManager = new EmployeeManager;
-  $fileName = $_FILES["uploadedFile"]["name"];
-  $employee = new Employee;
-  $employee->setRegistrationNumber($_POST["registrationNumber"]);
-  $employee->setFirstName($_POST["firstName"]);
-  $employee->setLastName($_POST["lastName"]);
-  $employee->setBirthDate($_POST["birthDate"]);
-  $employee->setDepartment($_POST["department"]);
-  $employee->setSalary($_POST['salary']);
-  $employee->setOccupation($_POST['occupation']);
-  $employee->setPhoto($fileName);
+  $employee = new Employee();
+  $employeeManager = new EmployeeManager();
 
-  $tempName = $_FILES["uploadedFile"]["tmp_name"];
+  $employee->setFirstName($_POST['fname']);
+  $employee->setLastName($_POST['lname']);
+  $employee->setBirthDate($_POST['birthdate']);
+  $employee->setRegistrationNumber($_POST['registNumber']);
+  $employee->setFunctionEmployee($_POST['functionEmployee']);
+  $employee->setSalary($_POST['salary']);
+  $employee->setDepartement($_POST['departement']);
+  $employee->setPhoto($_POST['photo']);
+
+
+
+
+
+
   $employeeManager->insertEmployee($employee);
-  $employeeManager->uploadPhoto($fileName, $tempName);
-  header("location: main.php");
+
+  header("Location: main.php");
 }
 
 ?>
-
 
 
 
@@ -97,26 +100,27 @@ if (!empty($_POST)) {
           </div>
 
           <div class="card-body">
+
             <form method="POST" enctype="multipart/form-data" id="formSubmit" class="row g-3 ">
               <div class="col-md-6">
                 <label for="inputTitle" class="form-label"></label>
-                <input type="text" required name="registrationNumber" class="form-control" id="inputTitle" placeholder="Registration Number">
+                <input type="text" required name="registNumber" class="form-control" id="inputTitle" placeholder="Registration Number">
               </div>
               <div class="col-md-6">
                 <label for="inputAuthor" class="form-label"></label>
-                <input type="text" required name="firstName" class="form-control" id="inputAuthor" placeholder="First Name">
+                <input type="text" required name="fname" class="form-control" id="inputAuthor" placeholder="First Name">
               </div>
               <div class="col-md-6"">
                                     <label for=" inputPrix" class="form-label"></label>
-                <input type="text" required name="lastName" class="form-control" id="inputPrix" placeholder="Last Name">
+                <input type="text" required name="lName" class="form-control" id="inputPrix" placeholder="Last Name">
               </div>
               <div class="col-6">
                 <label for="inputDate" class="form-label"></label>
-                <input type="date" required name="birthDate" class="form-control" id="inputDate" placeholder="Birth date ">
+                <input type="date" required name="birthdate" class="form-control" id="inputDate" placeholder="Birth date ">
               </div>
               <div class="col-6">
                 <label for="department" class="form-label"></label>
-                <input type="text" required name="department" class="form-control" placeholder="Department">
+                <input type="text" required name="departement" class="form-control" placeholder="Department">
               </div>
               <div class="col-md-6">
                 <label for="salary" class="form-label"></label>
@@ -124,7 +128,7 @@ if (!empty($_POST)) {
               </div>
               <div class="col-6">
                 <label for="occupation" class="form-label"></label>
-                <input type="text" required name="occupation" class="form-control" placeholder="Occupation">
+                <input type="text" required name="functionEmployee" class="form-control" placeholder="Occupation">
               </div>
               <div class="col-6">
                 <label for="photo" class="form-label"></label>
@@ -135,6 +139,7 @@ if (!empty($_POST)) {
                 <button id="submitButton" type="submit" class="btn btn-primary ">Submit</button>
               </div>
             </form>
+
           </div>
         </div>
       </div>
