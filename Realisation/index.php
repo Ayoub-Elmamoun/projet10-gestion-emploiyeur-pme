@@ -8,7 +8,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 
   if ($username == 'admin' && $password == 'admin') {
 
-    header('location:main.php');
+    header('location:insert.php');
   }
 }
 ?>
@@ -20,33 +20,33 @@ if (isset($_POST['username'], $_POST['password'])) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
-
+  
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-  <link rel="stylesheet" href="../Realisation/style/css/owl.carousel.min.css">
-
+  
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../Realisation/style/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
   <!-- Style -->
-  <link rel="stylesheet" href="../Realisation/style/css/style.css">
-
-  <title>Website Menu #8</title>
+  <link rel="stylesheet" href="css/style.css">
+  <title>LOGIN</title>
 </head>
 
-<body class="hero" style="background-image: url('/Realisation/style/images/nature-background.jpg');">
+<body class="hero" style="background-image: url('images/nature-background.jpg');">
 
 
   <header role="banner">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="index.html">PME</a>
+        <a class="navbar-brand " href="index.html">PME</a>
       </div>
     </nav>
   </header>
   <!-- END header -->
+
   <div class="container" style="padding-top: 50px;">
     <div class="row">
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -55,11 +55,11 @@ if (isset($_POST['username'], $_POST['password'])) {
             <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
             <form method="post">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
+                <input type="text" class="form-control" id="floatingInput" placeholder="your username" name="username">
                 <!-- <label for="floatingInput">Email address</label> -->
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="your password" name="password">
                 <!-- <label for="floatingPassword">Password</label> -->
               </div>
 
