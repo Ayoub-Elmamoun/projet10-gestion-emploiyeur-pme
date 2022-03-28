@@ -9,7 +9,7 @@ class EmployeeManager
     private function getConnection()
     {
         if (is_null($this->Connection)) {
-            $this->Connection = mysqli_connect('localhost', 'test1', 'test1', 'employees_db');
+            $this->Connection = mysqli_connect('localhost', 'admin', 'admin', 'employees_db');
 
             if (!$this->Connection) {
                 $message = 'Connection Error: ' . mysqli_connect_error();
@@ -158,7 +158,7 @@ class EmployeeManager
             $employee->setRegistrationNumber($searchedEmployee['registNumber']);
             $employee->setFirstName($searchedEmployee['first_Name']);
             $employee->setLastName($searchedEmployee['last_Name']);
-            $employee->setBirthDate($searchedEmployee['birthDate']);
+            $employee->setBirthDate($searchedEmployee['birthdate']);
             $employee->setDepartement($searchedEmployee['departement']);
             $employee->setSalary($searchedEmployee['salary']);
             $employee->setFunctionEmployee($searchedEmployee['functionEmployee']);

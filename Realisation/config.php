@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'test1', 'test1', 'employees_db');
+$conn = mysqli_connect('localhost', 'admin', 'admin', 'employees_db');
 
 // check connection
 if (!$conn) {
