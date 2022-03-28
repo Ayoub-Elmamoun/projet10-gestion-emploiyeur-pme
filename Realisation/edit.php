@@ -112,27 +112,27 @@ if(isset($_POST['Update'])){
             <form method="POST" enctype="multipart/form-data" id="formSubmit" class="row g-3 ">
               <div class="col-md-6">
                 <label for="inputTitle" class="form-label"></label>
-                <input type="text" required name="registNumber" class="form-control" id="inputTitle" placeholder="Registration Number">
+                <input type="text" required name="registNumber" value="<?php echo $employe->getRegistrationNumber()?>" class="form-control" id="inputTitle" placeholder="Registration Number">
               </div>
               <div class="col-md-6">
                 <label for="inputAuthor" class="form-label"></label>
-                <input type="text" required name="first_name" class="form-control" id="inputAuthor" placeholder="First Name">
+                <input type="text" required name="first_name"  value="<?php echo $employe->getFirstName()?>" class="form-control" id="inputAuthor" placeholder="First Name">
               </div>
               <div class="col-md-6"">
                                     <label for=" inputPrix" class="form-label"></label>
-                <input type="text" required name="last_Name" class="form-control" id="inputPrix" placeholder="Last Name">
+                <input type="text" required name="last_Name" value="<?php echo $employe->getLastName()?>" class="form-control" id="inputPrix" placeholder="Last Name">
               </div>
               <div class="col-6">
                 <label for="inputDate" class="form-label"></label>
-                <input type="date" required name="birthdate" class="form-control" id="inputDate" placeholder="Birth date ">
+                <input type="date" required name="birthdate" value="<?php echo $employe->getBirthDate()?>"  class="form-control" id="inputDate" placeholder="Birth date ">
               </div>
               <div class="col-6">
                 <label for="department" class="form-label"></label>
-                <input type="text" required name="departement" class="form-control" placeholder="Department">
+                <input type="text" required name="departement" value="<?php echo $employe->getDepartement()?>" class="form-control" placeholder="Department">
               </div>
               <div class="col-md-6">
                 <label for="salary" class="form-label"></label>
-                <input type="number" required name="salary" class="form-control" placeholder="Salary">
+                <input type="number" required name="salary" value="<?php echo $employe->getSalary()?>" class="form-control" placeholder="Salary">
               </div>
               <div class="col-6">
                 <label for="occupation" class="form-label"></label>
@@ -140,7 +140,7 @@ if(isset($_POST['Update'])){
               </div>
               <div class="col-6">
                 <label for="photo" class="form-label"></label>
-                <input type="file" required name="uploadedFile" class="form-control" value="" placeholder="Photo">
+                <input type="file" required name="uploadedFile" value="<?php echo $employe->getPhoto()?>" class="form-control" value="" placeholder="Photo">
               </div>
 
               <div class="container row justify-content-center col-sm-12" style="padding-top: 20px; margin-left: 10px; margin-right:10px;">
