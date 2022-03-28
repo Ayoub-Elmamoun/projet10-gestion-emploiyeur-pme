@@ -144,7 +144,29 @@ class EmployeeManager
         return $employee;
     }
 
+    public function searchByInput($searchInput)
+    {
+        $searchQuery = "SELECT * FROM employees WHERE registNumber = '$searchInput' OR first_Name = '$searchInput' OR departement = '$searchInput'";
+        $result = mysqli_query($this->getConnection(), $searchQuery);
+        $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+        $employeeArray = array();
+        foreach ($data as $searchedEmployee) {
+
+            $employee = new Employee();
+            $employee->setPhoto($searchedEmployee['photo']);
+            $employee->setRegistrationNumber($searchedEmployee['registNumber']);
+            $employee->setFirstName($searchedEmployee['first_Name']);
+            $employee->setLastName($searchedEmployee['last_Name']);
+            $employee->setBirthDate($searchedEmployee['birthDate']);
+            $employee->setDepartement($searchedEmployee['departement']);
+            $employee->setSalary($searchedEmployee['salary']);
+            $employee->setFunctionEmployee($searchedEmployee['functionEmployee']);
+
+            array_push($employeeArray, $employee);
+        }
+        return $employeeArray;
+    }
 
 
     public function delete($id)

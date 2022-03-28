@@ -5,8 +5,8 @@ if (!empty($_POST)) {
   $employee = new Employee();
   $employeeManager = new EmployeeManager();
 
-  $employee->setFirstName($_POST['fname']);
-  $employee->setLastName($_POST['lname']);
+  $employee->setFirstName($_POST['first_name']);
+  $employee->setLastName($_POST['last_name']);
   $employee->setBirthDate($_POST['birthdate']);
   $employee->setRegistrationNumber($_POST['registNumber']);
   $employee->setFunctionEmployee($_POST['functionEmployee']);
@@ -66,12 +66,12 @@ if (!empty($_POST)) {
           <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Add Employee</a>
+              <a class="nav-link" href="insert.php">Add Employee</a>
             </li>
 
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Search Employee</a>
+              <a class="nav-link" href="search.php">Search Employee</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="main.php">Browse Employees</a>
@@ -80,7 +80,7 @@ if (!empty($_POST)) {
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item cta-btn">
-              <a class="nav-link btn" href="index.php">log out</a>
+              <a class="nav-link btn bg-danger" href="index.php">log out</a>
             </li>
           </ul>
 
@@ -108,11 +108,11 @@ if (!empty($_POST)) {
               </div>
               <div class="col-md-6">
                 <label for="inputAuthor" class="form-label"></label>
-                <input type="text" required name="fname" class="form-control" id="inputAuthor" placeholder="First Name">
+                <input type="text" required name="first_name" class="form-control" id="inputAuthor" placeholder="First Name">
               </div>
               <div class="col-md-6"">
                                     <label for=" inputPrix" class="form-label"></label>
-                <input type="text" required name="lName" class="form-control" id="inputPrix" placeholder="Last Name">
+                <input type="text" required name="last_Name" class="form-control" id="inputPrix" placeholder="Last Name">
               </div>
               <div class="col-6">
                 <label for="inputDate" class="form-label"></label>

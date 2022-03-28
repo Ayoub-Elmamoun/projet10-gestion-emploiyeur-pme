@@ -52,7 +52,7 @@ $data = $employeeManager->getAllEmployees();
 
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Search Employee</a>
+              <a class="nav-link" href="search.php">Search Employee</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="main.php">Browse Employees</a>
@@ -61,7 +61,7 @@ $data = $employeeManager->getAllEmployees();
 
           <ul class="navbar-nav ml-auto">
             <li class="nav-item cta-btn">
-              <a class="nav-link btn" href="index.php">log out</a>
+              <a class="nav-link btn bg-danger" href="index.php">log out</a>
             </li>
           </ul>
 
@@ -114,7 +114,6 @@ $data = $employeeManager->getAllEmployees();
                       <td><?= $employee->getSalary() ?></td>
                       <td><?= $employee->getDepartement() ?></td>
                       <td><?= $employee->getPhoto() ?></td>
-
 
                       <td>
                         <button class="btn btn-secondary "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
