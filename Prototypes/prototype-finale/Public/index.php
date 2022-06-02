@@ -1,6 +1,6 @@
 <?php
 
-include 'employeeManager.php';
+include '../managers/employeeManager.php';
 
 $employeeManager = new EmployeeManager();
 $data = $employeeManager->getAllEmployees();

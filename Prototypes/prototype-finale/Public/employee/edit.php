@@ -1,7 +1,7 @@
 
 <?php
 
-include "employeeManager.php";
+include "../managers/employeeManager.php";
 $employeeManager = new EmployeeManager();
 
 if(isset($_GET['id'])){
