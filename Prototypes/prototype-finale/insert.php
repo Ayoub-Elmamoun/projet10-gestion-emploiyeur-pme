@@ -132,7 +132,7 @@ if (!empty($_POST)) {
               </div>
 
               <div class="container row justify-content-center col-sm-12" style="padding-top: 20px; margin-left: 10px; margin-right:10px;">
-                <button id="submitButton" type="submit" class="btn btn-primary ">Submit</button>
+                <button id="submitButton" type="submit" class="btn">Submit</button>
               </div>
             </form>
 

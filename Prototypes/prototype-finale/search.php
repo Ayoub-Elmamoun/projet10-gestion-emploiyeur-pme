@@ -120,8 +120,8 @@ $data = $employeeManager->getAllEmployees();
                                             <td><?= $employee->getPhoto() ?></td>
 
                                             <td>
-                                                <button class="btn btn-secondary "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
-                                                <button class="btn btn-danger"> <a class="text-decoration-none " href="delete.php?id=<?php echo $employee->getId() ?>">delete</a></button>
+                                                <button class="btn "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
+                                                <button class="btn "> <a class="text-decoration-none " href="delete.php?id=<?php echo $employee->getId() ?>">delete</a></button>
                                             </td>
                                         </tr>
                                     <?php } ?>
