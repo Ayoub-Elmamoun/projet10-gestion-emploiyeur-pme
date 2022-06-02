@@ -1,17 +1,13 @@
 <?php
+include 'config.php';
+include 'employeeManager.php';
 
+$employeeManager = new EmployeeManager();
+$data = $employeeManager->getAllEmployees();
 
-if (isset($_POST['username'], $_POST['password'])) {
-
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  if ($username == 'admin' && $password == 'admin') {
-
-    header('location:insert.php');
-  }
-}
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -20,75 +16,129 @@ if (isset($_POST['username'], $_POST['password'])) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-  
+
   <link rel="stylesheet" href="css/owl.carousel.min.css">
-  
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  
+
   <!-- Style -->
   <link rel="stylesheet" href="css/style.css">
-  <title>LOGIN</title>
+
+  <title>Insert Employee</title>
 </head>
 
-<body class="hero" style="background-image: url('images/nature-background.jpg');">
+<body style="background-image: url('images/nature-background.jpg');">
 
 
   <header role="banner">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand " href="index.html">PME</a>
+        <a class="navbar-brand" href="main.php">pme</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+          <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+
+            <li class="nav-item">
+              <a class="nav-link" href="insert.php">Add Employee</a>
+            </li>
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="search.php">Search Employee</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="main.php">Browse Employees</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item cta-btn">
+              <a class="nav-link btn bg-danger" href="index.php">log out</a>
+            </li>
+          </ul>
+
+        </div>
       </div>
     </nav>
   </header>
-  <!-- END header -->
 
-  <div class="container" style="padding-top: 50px;">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+  <div class="container" style="padding-top:90px;">
+
+    <div class="row align-content-center  justify-content-center">
+      <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
         <div class="card border-0 shadow rounded-4 my-5 ">
-          <div class="card-body p-4 p-sm-5">
-            <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
-            <form method="post">
-              <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="your username" name="username">
-                <!-- <label for="floatingInput">Email address</label> -->
-              </div>
-              <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="your password" name="password">
-                <!-- <label for="floatingPassword">Password</label> -->
-              </div>
+          <div class="card-header text-center">
+            <div>YOUR EMPLOYEES</div>
+          </div>
 
-              <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
-                <label class="form-check-label " for="rememberPasswordCheck">
-                  Remember password
-                </label>
-              </div>
-              <div class="d-grid ">
-                <button class="col-lg-5  btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign Sin</button>
-              </div>
-              <hr class="my-4">
-            </form>
+          <div class="card ">
+
+            <div class="card-body table table-bordered" id="card-body">
+
+              <table class="table" id="worksTable">
+                <thead>
+                  <tr>
+
+                    <th>Registration number</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of birth</th>
+                    <th>Function</th>
+                    <th>Salary</th>
+                    <th>Departement</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <?php
+                  foreach ($data as $employee) {
+                  ?>
+
+                    <tr>
+                      <td><?= $employee->getRegistrationNumber() ?></td>
+                      <td><?= $employee->getFirstName() ?></td>
+                      <td><?= $employee->getLastName() ?></td>
+                      <td><?= $employee->getBirthDate() ?></td>
+                      <td><?= $employee->getFunctionEmployee() ?></td>
+                      <td><?= $employee->getSalary() ?></td>
+                      <td><?= $employee->getDepartement() ?></td>
+                      <td><?= $employee->getPhoto() ?></td>
+
+                      <td>
+                        <button class="btn btn-secondary "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
+                        <button class="btn btn-danger"> <a class="text-decoration-none " href="delete.php?id=<?php echo $employee->getId() ?>">delete</a></button>
+                      </td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+
+
+              </table>
+
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- <div class="hero" style="background-image: url('images/nature-background.jpg');"></div> -->
 
 
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/main.js"></script>
+
+
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>
