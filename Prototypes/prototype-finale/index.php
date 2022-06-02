@@ -32,7 +32,7 @@ $data = $employeeManager->getAllEmployees();
   <title>Insert Employee</title>
 </head>
 
-<body style="background-image: url('images/nature-background.jpg');">
+<body>
 
 
   <header role="banner">

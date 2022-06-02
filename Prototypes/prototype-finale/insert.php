@@ -51,7 +51,7 @@ if (!empty($_POST)) {
   <title>Insert Employee</title>
 </head>
 
-<body style="background-image: url('images/nature-background.jpg');">
+<body>
 
 
   <header role="banner">
@@ -78,11 +78,7 @@ if (!empty($_POST)) {
             </li>
           </ul>
 
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item cta-btn">
-              <a class="nav-link btn bg-danger" href="index.php">log out</a>
-            </li>
-          </ul>
+
 
         </div>
       </div>
