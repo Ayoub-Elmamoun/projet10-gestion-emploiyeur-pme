@@ -8,7 +8,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 
   if ($username == 'admin' && $password == 'admin') {
 
-    header('location:insert.php');
+    header('location:main.php');
   }
 }
 ?>

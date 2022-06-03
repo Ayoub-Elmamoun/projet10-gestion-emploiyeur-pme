@@ -1,28 +1,18 @@
 <?php
 include 'employee.php';
+include 'connection.php';
 
 class EmployeeManager
 {
-
-    private $Connection = null;
-
-    private function getConnection()
-    {
-        if (is_null($this->Connection)) {
-            $this->Connection = mysqli_connect('localhost', 'root', '', 'employees_db');
-
-            if (!$this->Connection) {
-                $message = 'Connection Error: ' . mysqli_connect_error();
-                throw new Exception($message);
-            }
-        }
-        return $this->Connection;
-    }
+    
 
     public function getAllEmployees()
     {
+
+        $Connection = new MysqlConnection();
+
         $sqlGetData = 'SELECT id,registNumber, first_name, last_name, birth_date, functionEmployee ,salary,departement,photo  FROM employees ';
-        $result = mysqli_query($this->getConnection(), $sqlGetData);
+        $result = mysqli_query($Connection->getConnection(), $sqlGetData);
         $employeesList = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $employees = array();
@@ -47,6 +37,8 @@ class EmployeeManager
 
     public function insertEmployee($employee)
     {
+        $Connection = new MysqlConnection();
+
         $registrationNumber = $employee->getRegistrationNumber();
         $firstName = $employee->getFirstName();
         $lastName = $employee->getLastName();
@@ -80,7 +72,7 @@ class EmployeeManager
                                     )";
 
 
-        mysqli_query($this->getConnection(), $sqlInsertQuery);
+        mysqli_query($Connection->getConnection(), $sqlInsertQuery);
     }
 
 
@@ -100,6 +92,8 @@ class EmployeeManager
     ) {
 
         // Update query
+        $Connection = new MysqlConnection();
+        
         $sqlUpdateQuery = "UPDATE employees SET 
                          registNumber='$registrationNumber',
                          first_name='$firstName', 
@@ -112,20 +106,22 @@ class EmployeeManager
                          WHERE id=$id";
 
         // Make query 
-        mysqli_query($this->getConnection(), $sqlUpdateQuery);
+        mysqli_query($Connection->getConnection(), $sqlUpdateQuery);
 
-        if (mysqli_error($this->getConnection())) {
-            $msg = 'Erreur' . mysqli_errno($this->getConnection());
+        if (mysqli_error($Connection->getConnection())) {
+            $msg = 'Erreur' . mysqli_errno($Connection->getConnection());
             throw new Exception($msg);
         }
     }
 
     public function getEmployee($id)
     {
+        $Connection = new MysqlConnection();
+
         $sqlGetQuery = "SELECT * FROM employees WHERE id= $id";
 
         // get result
-        $result = mysqli_query($this->getConnection(), $sqlGetQuery);
+        $result = mysqli_query($Connection->getConnection(), $sqlGetQuery);
 
         // fetch to array
         $employee_data = mysqli_fetch_assoc($result);
@@ -146,8 +142,10 @@ class EmployeeManager
 
     public function searchByInput($searchInput)
     {
+        $Connection = new MysqlConnection();
+
         $searchQuery = "SELECT * FROM employees WHERE registNumber = '$searchInput' OR first_Name = '$searchInput' OR departement = '$searchInput'";
-        $result = mysqli_query($this->getConnection(), $searchQuery);
+        $result = mysqli_query($Connection->getConnection(), $searchQuery);
         $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $employeeArray = array();
@@ -171,7 +169,9 @@ class EmployeeManager
 
     public function delete($id)
     {
+        $Connection = new MysqlConnection();
+
         $sql = "DELETE FROM employees WHERE id= '$id'";
-        mysqli_query($this->getConnection(), $sql);
+        mysqli_query($Connection->getConnection(), $sql);
     }
 }

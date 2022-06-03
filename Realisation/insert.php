@@ -9,7 +9,6 @@ if (!empty($_POST)) {
   $employee->setLastName($_POST['last_name']);
   $employee->setBirthDate($_POST['birthdate']);
   $employee->setRegistrationNumber($_POST['registNumber']);
-  $employee->setFunctionEmployee($_POST['functionEmployee']);
   $employee->setSalary($_POST['salary']);
   $employee->setDepartement($_POST['departement']);
   $employee->setPhoto($_POST['photo']);

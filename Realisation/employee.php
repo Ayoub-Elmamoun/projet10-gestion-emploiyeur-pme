@@ -1,59 +1,13 @@
 <?php
-class Employee
+include "people.php";
+class Employee extends People
 {
 
-    private $id;
     private $registrationNumber;
-    private $firstName;
-    private $lastName;
-    private $birthDate;
-    private $function;
     private $salary;
     private $departement;
-    private $photo;
 
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function setId($value)
-    {
-        $this->id = $value;
-    }
-
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName($value)
-    {
-        $this->firstName = $value;
-    }
-
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName($value)
-    {
-        $this->lastName = $value;
-    }
-
-    public function getBirthDate()
-    {
-        return $this->birthDate;
-    }
-
-    public function setBirthDate($value)
-    {
-        $this->birthDate = $value;
-    }
-
-
-
-
+    // Getters and setters for registrationNumber
     public function getRegistrationNumber()
     {
         return $this->registrationNumber;
@@ -64,20 +18,7 @@ class Employee
         $this->registrationNumber = $value;
     }
 
-
-
-    public function getFunctionEmployee()
-    {
-        return $this->functionEmployee;
-    }
-
-    public function setFunctionEmployee($value)
-    {
-        $this->functionEmployee = $value;
-    }
-
-
-
+    // Getters and setters for salary
     public function getSalary()
     {
         return $this->salary;
@@ -88,7 +29,7 @@ class Employee
         $this->salary = $value;
     }
 
-
+    // Getters and setters for departement
     public function getDepartement()
     {
         return $this->departement;
@@ -97,15 +38,5 @@ class Employee
     public function setDepartement($value)
     {
         $this->departement = $value;
-    }
-
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto($value)
-    {
-        $this->photo = $value;
     }
 }

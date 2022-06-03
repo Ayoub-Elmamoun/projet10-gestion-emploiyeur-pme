@@ -1,6 +1,9 @@
 <?php
 include '../Entities/employee.php';
+include '../Entities/connection.php';
 
+$Connection = new $MysqlConnection();
+$Connection->getConnection();
 class EmployeeManager
 {
 
