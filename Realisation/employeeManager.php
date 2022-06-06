@@ -59,7 +59,7 @@ class EmployeeManager extends MysqlConnection
                                     '$firstName',
                                     '$lastName',
                                     '$birthDate',
-                                    '$functionEmployee',
+                                    '',
                                     '$salary',
                                     '$departement',
                                     '$photo'
@@ -79,7 +79,6 @@ class EmployeeManager extends MysqlConnection
         $firstName,
         $lastName,
         $birthDate,
-        $functionEmployee,
         $salary,
         $departement,
         $photo
@@ -93,7 +92,7 @@ class EmployeeManager extends MysqlConnection
                          first_name='$firstName', 
                          last_name='$lastName', 
                          birth_date='$birthDate' ,
-                         functionEmployee ='$functionEmployee',
+                         functionEmployee ='',
                          salary='$salary',
                          departement='$departement',
                          photo='$photo'
