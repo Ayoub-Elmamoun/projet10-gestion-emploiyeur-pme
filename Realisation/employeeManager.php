@@ -2,17 +2,14 @@
 include 'employee.php';
 include 'connection.php';
 
-class EmployeeManager
+class EmployeeManager extends MysqlConnection
 {
-    
 
     public function getAllEmployees()
     {
 
-        $Connection = new MysqlConnection();
-
         $sqlGetData = 'SELECT id,registNumber, first_name, last_name, birth_date, functionEmployee ,salary,departement,photo  FROM employees ';
-        $result = mysqli_query($Connection->getConnection(), $sqlGetData);
+        $result = mysqli_query($this->getConnection(), $sqlGetData);
         $employeesList = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $employees = array();
@@ -23,7 +20,6 @@ class EmployeeManager
             $employee->setFirstName($employee_list['first_name']);
             $employee->setLastName($employee_list['last_name']);
             $employee->setBirthDate($employee_list['birth_date']);
-            $employee->setFunctionEmployee($employee_list['functionEmployee']);
             $employee->setSalary($employee_list['salary']);
             $employee->setDepartement($employee_list['departement']);
             $employee->setPhoto($employee_list['photo']);
@@ -37,13 +33,11 @@ class EmployeeManager
 
     public function insertEmployee($employee)
     {
-        $Connection = new MysqlConnection();
 
         $registrationNumber = $employee->getRegistrationNumber();
         $firstName = $employee->getFirstName();
         $lastName = $employee->getLastName();
         $birthDate = $employee->getBirthDate();
-        $functionEmployee = $employee->getFunctionEmployee();
         $salary = $employee->getSalary();
         $departement = $employee->getDepartement();
         $photo = $employee->getPhoto();
@@ -72,7 +66,7 @@ class EmployeeManager
                                     )";
 
 
-        mysqli_query($Connection->getConnection(), $sqlInsertQuery);
+        mysqli_query($this->getConnection(), $sqlInsertQuery);
     }
 
 
@@ -93,7 +87,7 @@ class EmployeeManager
 
         // Update query
         $Connection = new MysqlConnection();
-        
+
         $sqlUpdateQuery = "UPDATE employees SET 
                          registNumber='$registrationNumber',
                          first_name='$firstName', 
@@ -116,12 +110,12 @@ class EmployeeManager
 
     public function getEmployee($id)
     {
-        $Connection = new MysqlConnection();
+
 
         $sqlGetQuery = "SELECT * FROM employees WHERE id= $id";
 
         // get result
-        $result = mysqli_query($Connection->getConnection(), $sqlGetQuery);
+        $result = mysqli_query($this->getConnection(), $sqlGetQuery);
 
         // fetch to array
         $employee_data = mysqli_fetch_assoc($result);
@@ -132,7 +126,6 @@ class EmployeeManager
         $employee->setFirstName($employee_data['first_name']);
         $employee->setLastName($employee_data['last_name']);
         $employee->setBirthDate($employee_data['birth_date']);
-        $employee->setFunctionEmployee($employee_data['functionEmployee']);
         $employee->setSalary($employee_data['salary']);
         $employee->setDepartement($employee_data['departement']);
         $employee->setPhoto($employee_data['photo']);
@@ -142,10 +135,10 @@ class EmployeeManager
 
     public function searchByInput($searchInput)
     {
-        $Connection = new MysqlConnection();
+
 
         $searchQuery = "SELECT * FROM employees WHERE registNumber = '$searchInput' OR first_Name = '$searchInput' OR departement = '$searchInput'";
-        $result = mysqli_query($Connection->getConnection(), $searchQuery);
+        $result = mysqli_query($this->getConnection(), $searchQuery);
         $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         $employeeArray = array();
@@ -169,9 +162,8 @@ class EmployeeManager
 
     public function delete($id)
     {
-        $Connection = new MysqlConnection();
 
         $sql = "DELETE FROM employees WHERE id= '$id'";
-        mysqli_query($Connection->getConnection(), $sql);
+        mysqli_query($this->getConnection(), $sql);
     }
 }

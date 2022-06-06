@@ -1,21 +1,24 @@
 <?php 
 
- class MysqlConnection{
-    private $Connection = null;
-    public function getConnection()
-    {
-        if (is_null($this->Connection)) {
-            $this->Connection = mysqli_connect('localhost', 'root', '', 'employees_db');
+class MysqlConnection {
+    private $host;
+    private $username;
+    private $password;
+    private $databaseName;
 
-            if (!$this->Connection) {
-                $message = 'Connection Error: ' . mysqli_connect_error();
-                throw new Exception($message);
-            }
-        }
-        return $this->Connection;
+    protected function getConnection(){
+        $this->host = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->databaseName = "employees_db";
+
+        $connection = new mysqli($this->host , $this->username , $this-> password , $this->databaseName);
+        return $connection;
     }
+}
 
- }
+
+
 
 
 

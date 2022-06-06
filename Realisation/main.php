@@ -86,15 +86,14 @@ $data = $employeeManager->getAllEmployees();
               <table class="table" id="worksTable">
                 <thead>
                   <tr>
-
+                    <th>Photo</th>
                     <th>Registration number</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Date of birth</th>
-                    <th>Function</th>
                     <th>Salary</th>
                     <th>Departement</th>
-                    <th>Photo</th>
+
                     <th>Actions</th>
 
                   </tr>
@@ -106,14 +105,14 @@ $data = $employeeManager->getAllEmployees();
                   ?>
 
                     <tr>
+                      <td><?= $employee->getPhoto() ?></td>
                       <td><?= $employee->getRegistrationNumber() ?></td>
                       <td><?= $employee->getFirstName() ?></td>
                       <td><?= $employee->getLastName() ?></td>
                       <td><?= $employee->getBirthDate() ?></td>
-                      <td><?= $employee->getFunctionEmployee() ?></td>
                       <td><?= $employee->getSalary() ?></td>
                       <td><?= $employee->getDepartement() ?></td>
-                      <td><?= $employee->getPhoto() ?></td>
+
 
                       <td>
                         <button class="btn btn-secondary "><a class="text-decoration-none " href="edit.php?id=<?php echo $employee->getId() ?>">Edit</a></button>
